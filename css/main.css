@@ -1,0 +1,206 @@
+@charset "utf-8";
+* {margin: 0px;padding: 0px;}
+
+        
+        
+@font-face {
+	font-family: 'Arcus';
+	src: url(../fonts/Arcus/ArcusVariableSameSpacing.ttf);
+}
+
+
+html {
+
+}
+
+body{
+	background-color: #e7e7e7;
+	font-size: 16px;
+	display: flex;
+	flex-direction: row;
+}
+
+section{
+	min-height: 100vh;
+	text-align: left;
+}
+
+#input{
+	height: 200px;
+	width: 100%;
+	display: block;
+	box-sizing: border-box;
+	font-size: 0.8rem;
+	resize: none;
+	color: gray;
+	border: 1px solid #cdcdcd;
+	margin-top: 40px;
+	padding: 0.5em;
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+	appearance:         none;
+}
+
+button[type=button]{
+	margin-top: 1em;
+	padding: 0.5em;
+	font-size: 1em;
+	border-radius: 4px;
+	cursor: pointer;
+	outline: none;
+	border: 1px solid #cdcdcd;
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+	appearance:         none;
+}
+
+button[type=button]:active{
+	transform: translateY(2px)
+}
+
+.description{
+	color: gray;
+	margin-left: 2rem;
+}
+
+.font-version{
+	font-family: 'Arcus';
+	font-size: 3em;
+	color: white;
+}
+
+
+#inputsection{
+	width: 30vw;
+	padding: 3rem;
+	box-sizing: border-box;
+	background: #3b3b3b;
+}
+
+
+#console{
+	background: #111111;
+	width: 100%;
+	border-top: 5px solid #f0f0f0;
+	margin-top: 2rem;
+	color: white;
+	list-style: none;
+	min-height: 300px;
+	padding: 1em;
+	box-sizing: border-box;
+	font-family: monospace;
+	font-size: 0.8em;
+}
+
+#outputsection{
+	padding: 3rem 3rem 3rem 0;
+	display: flex;
+	flex-flow: row nowrap;
+/* 	background: yellow; */
+}
+
+
+.col{
+	width: 600px;
+	min-height: 400px;
+	overflow: visible;
+	font-size: 25px;
+	font-family: 'Arcus';
+	font-variation-settings: 'wdth' 100;
+	background-color: #ffffff;
+	border-top: 2px solid rgba(255, 167, 255, 1);
+	border-bottom: 2px solid rgba(255, 167, 255, 1);
+	border-left: 2px solid rgba(204, 153, 255, 1);
+	border-right: 2px solid rgba(204, 153, 255, 1);
+	box-shadow: 1px 1px 30px 10px #ccc;
+	margin-left: 3rem;
+}
+
+.wrapper{
+	display: inline-flex;
+	width: auto;
+	flex-flow: column nowrap;
+	align-items: flex-end;
+}
+
+.resizehandle{
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-end;
+	padding-bottom: 0.8em;
+	cursor:col-resize;
+}
+
+.remove-col{
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-end;
+	padding-bottom: 0.8em;
+	cursor: pointer;
+	height:30px;
+}
+
+#character-count{
+	margin-right: 0.5em;
+	color: #AAA;
+}
+
+.resizesymbol{
+	width: 7px;
+	height: 30px;
+	background: #ff00ff;
+	cursor:col-resize;
+}
+
+.line{
+/*  	display: block; */
+/* 	width: 100%; */
+	white-space: nowrap;
+}
+
+.line.full{
+	display: inline-block;
+	position: relative;
+ 	width: 100%;
+}
+
+.leftSpaceIndicator{
+	color: red;
+	position: absolute;
+	left: -1em;
+	z-index: 100;
+}
+
+
+
+/** Text Preview **/
+
+.preview .resizehandle,
+.preview .leftSpaceIndicator,
+.preview #inputsection,
+.preview .remove-col,
+.preview #clone
+{
+	visibility: hidden;
+}
+
+.preview .col{
+	border: 2px solid transparent!important;
+	box-shadow: none;
+}
+
+body.preview{
+	background: white;
+}
+
+
+/* Debugging */
+/*
+ .line:nth-of-type(odd){
+	color: #ff00ff;
+}
+
+.line:nth-of-type(even){
+	color: #00ff00;
+}
+ */

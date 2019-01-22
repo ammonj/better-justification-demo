@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <meta name="description" content="">
+
+
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="./css/main.css">
+    
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-resizable.min.js"></script>
+    
+    <script type="text/javascript" src="./js/guessLanguage/_languageData.js"></script>
+    <script type="text/javascript" src="./js/guessLanguage/guessLanguage.js"></script>
+    
+    <script type="text/javascript" src="./js/hypher/dist/jquery.hypher.js"></script>
+    <script type="text/javascript" src="./js/hypher/dist/patterns/en-us.js"></script>
+    <script type="text/javascript" src="./js/hypher/dist/patterns/de.js"></script>
+    
+    <script type="text/javascript" src="./js/variable-typeset.js"></script>
+    <script type="text/javascript" src="./js/ui.js"></script>
+ 
+</head>
+
+<body>
+    <section id="inputsection">
+<!--         <span class="font-version">&Delta;</span> -->
+        <textarea id="input">A letter is two shapes, one light, one dark. I call the light shape the white of the letter and the dark shape the black. The black consists of the regions of the letter that enclose the white. White and black can be replaced by any combination of a light and dark colour, and light and dark can switch roles, but the intriguing effects of these permutations lie outside the scope of this book.</textarea>
+        <input type="range" min="12" max="50" value="25" class="slider" id="fontsize"><span id="fontsize-display" style="color: white;padding: 5px;"></span>
+        <button id="justify" type="button">justify</button><br>
+        <label><input type="checkbox" id="hyphenation" checked/>hyphenation</label><br>
+        <label><input type="checkbox" id="variable-font" checked/>variable font</label><br>
+        <label><input type="checkbox" id="ligatures" checked/>ligatures</label><br>
+<!--         <button id="removeBlocksatz" type="button">Linksbündig</button>
+        <button id="makeBlocksatz" type="button">Blocksatz</button> -->
+        <!-- <span class="description">// <b>greedy</b> typeset algorithm by Johannes Ammon</span> -->
+        <ul id="console"></ul>
+    </section>
+    
+    <section id="outputsection">
+        <div class="wrapper">
+            <div class="resizehandle">
+                <span id="character-count"></span>
+                <div class="resizesymbol"></div>
+            </div>
+            <div id="column" class="col"></div>
+            <button id="clone" type="button">clone</button>
+        </div>
+    </section>
+    
+    
+    
+</body>
+
+</html>
