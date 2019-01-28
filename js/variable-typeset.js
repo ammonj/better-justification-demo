@@ -24,13 +24,16 @@
 	
 	// Space-Ruler (Bram Stein)
 	ruler = $('<div class="ruler">&nbsp;</div>').css({
-		visibility: 'hidden',
+		visibility: 'visible',
 		position: 'absolute',
 		top: '-8000px',
 		width: 'auto',
 		display: 'inline',
 		left: '-8000px'
 	});
+	
+	
+	// My Console (User Interface Ouput)
 	
 	function myConsole(input){
 		$("#console").append("<li>" + input + "</li>");
@@ -62,6 +65,111 @@
 		let textwert = $("textarea#input").val(); // Text aus Inputfeld holen
 		textwert = textwert.replace(/\u00AD/g,''); // Softhyphens entfernen
 		$("textarea#input").text(textwert); // Text in Inputfeld einfügen
+	}
+	
+	
+	// Word Spacing anpassen (Funktion)
+	
+	function adjustWordSpacing($currentline){
+	 	
+	 	$currentline.removeClass("full").css("word-spacing", "normal"); // set width: auto and reset word-spacing
+	
+	 	function countSpaces(text){ // spaces zählen
+	 		spaces = 0;
+	 		for ( i = 0; i < text.length; i++ ) // durchlaufe alle zeichen
+	 		{
+	 			if(text.charAt(i) == '\u0020'){ // wenn leerzeichen
+	 				spaces++; // setze variable +1
+	 			}
+	 		}
+	 		return spaces;
+	 	}
+	 	
+	 	leftSpace = columnWidth - $currentline.width();
+	 	wordSpacing = ruler.width() + (leftSpace / countSpaces($currentline.text()));
+	 	$currentline.css("word-spacing", wordSpacing + "px").css("width", "100%");
+	 	$currentline.addClass("full");
+	}
+	
+	// Optischer Randausgleich (Funktion)
+	
+	function optischerRandausgleich(){
+		
+		$column = $('#column');
+		columnwidth = $column.width();
+		lineIndex = 0;
+		nol = $('#column .line').length; // Total number of lines
+
+		
+		$('#column .line').each(function(lineIndex) { // Gehe alle Zeilen durch
+ 			lineIndex++;
+ 			string = $(this).text();
+			
+ 			if (((string.charAt(string.length-1) == '-') || (string.charAt(string.length-1) =='\u002E')) && (lineIndex < nol)){ // Wenn letztes Zeichen ein hyphen oder Punkt UND nicht letzte Zeile
+	 			
+	 			
+	 			if (string.charAt(string.length-1) == '-'){ // wenn letztes Zeichen ein hyphen
+		 			$(this).html(function(_, html) { // Zeichen in ein Span setzen um Breite zu messen
+		 			   return html.split('-').join("<span class='measure'>-</span>");
+		 			});
+	 			 		
+	 		
+			 		measure = $(this).find('.measure').width();
+			 		wdth = parseInt($(this).css("font-variation-settings").replace("\"wdth\" ", ""));
+			 		wordspacing = parseInt($(this).css("word-spacing").replace("px", "").replace("normal", "0"));
+			 		
+			 		$(this).css("display", "inline"); // Zeile auf inline setzen um Messung vorzunehmen
+			 			
+			 		if ($(this).width() > columnwidth){
+				 		while ($(this).width() > (columnwidth + (measure / 2))){
+							wdth = wdth - 1;
+							$(this).css("font-variation-settings", ("\"wdth\" " + wdth));
+							if (wdth == 0){
+								break;
+							}
+				 		}
+				 		// $(this).css("color","red"); // debug
+			 		}
+			 		if ($(this).width() <= columnwidth){
+				 		while ($(this).width() < (columnwidth + (measure / 2))){
+				 			 wdth = wdth + 1;
+				 			 $(this).css("font-variation-settings", ("\"wdth\" " + wdth));
+				 			 if (wdth > 200){
+								wordspacing = wordspacing + 1;
+								$(this).css("word-spacing", (wordspacing + "px"));
+				 			 }
+				 		 }
+			 			 // $(this).css("color","blue");// debug
+			 		}
+			 		$(this).css("display", "inline-block"); // display-Wert wieder zurücksetzen
+		 		}
+		 		
+		 		
+		 		if (string.charAt(string.length-1) == '\u002E'){ // wenn letztes Zeichen ein Punkt
+		 			 $(this).html(function(_, html) { // Zeichen in ein Span setzen um Breite zu messen
+		 				return html.split('.').join("<span class='measure'>.</span>");
+		 			 });
+		 			 
+		 			 measure = $(this).find('.measure').width();
+		 			 wdth = parseInt($(this).css("font-variation-settings").replace("\"wdth\" ", ""));
+		 			 wordspacing = parseInt($(this).css("word-spacing").replace("px", "").replace("normal", "0"));
+		 			 
+		 			 $(this).css("display", "inline"); // Zeile auf inline setzen um Messung vorzunehmen
+		 			 
+		 			 while ($(this).width() < (columnwidth + (measure / 2))){
+		 			  	wdth = wdth + 1;
+		 			  	$(this).css("font-variation-settings", ("\"wdth\" " + wdth));
+		 			  	if (wdth > 200){
+		 			 		wordspacing = wordspacing + 1;
+		 			 		$(this).css("word-spacing", (wordspacing + "px"));
+		 			  	}
+		 			 }
+					// $(this).css("color","green");// debug
+		 			 
+		 		}
+
+	 		}
+		});
 	}
 		
 		
@@ -99,22 +207,22 @@
 			
 			$currentLine.append(text.charAt(c)); // Buchstabe setzen
 			if (slow) await sleep(0); // Sleep (only for debug purpose)
-			
-			
+				
 			
 			
 			if(($currentLine.width() >= columnWidth) && ((text.charAt(c) == '\u0020') || (text.charAt(c) == '\u00AD'))){ // wenn Zeile voll und Breakpoint erreicht
-				console.log("fire currentLine width " + $currentLine.width())
+				//console.log("fire currentLine width " + $currentLine.width())
 			
 				overflow = ($currentLine.width()) - columnWidth; // differenz zwischen zeilenlänge und spaltenbreite
 				
-				$currentLineClone = $currentLine.clone()
+				// $currentLineClone = $currentLine.clone()
+				$currentLineClone = $currentLine // schneller bugfix, weil clone nicht gemessen werden kann
 				
 				while (overflow > 0) { // verkleinere die wdth Achse schrittweise bis nur noch 0px Platz am Ende
 					wdth = wdth - 1;
 					$currentLineClone.css("font-variation-settings", ("\'wdth\'" + wdth));
 					overflow = ($currentLineClone.width()) - columnWidth; // differenz erneut berechnen
-					console.log("wdth " + wdth + "overflow" + overflow);
+					//console.log("wdth " + wdth + "overflow" + overflow);
 					if (wdth <= 0) { // wenn wdth achse ausgerzeizt ist
 						myConsole("⚠️ line " + lineIndex + ": shrinking failed"); // Console Output
 						
@@ -150,6 +258,8 @@
 					}
 				} // close if
 
+
+
 			
 				// String am Breakpoint abschneiden
 							
@@ -174,7 +284,8 @@
 				wdth = 100 // reset wdth Achse, um Vorgang zu beschleunigen
 				overflow = ($currentLine.width()) - columnWidth; // differenz zwischen zeilenlänge und spaltenbreite
 				
-				$currentLineClone = $currentLine.clone()
+				// $currentLineClone = $currentLine.clone()
+				$currentLineClone = $currentLine // schneller bugfix, weil clone nicht gemessen werden kann
 				
 				while (overflow < 0) { // vergrößere die wdth Achse schrittweise bis nur noch 0px Platz am Ende
 					wdth = wdth + 1;
@@ -196,6 +307,9 @@
 			} // end if
 
 
+
+			// Letzte Zeile
+
 			if (c == (text.length - 1)){ // Wenn beim letzten Zeichen angekommen
 					$currentLine.css("font-variation-settings", ("\'wdth\'" + normalwdth)); // reset wdth Achse in aktueller Zeile
 					overflow = ($currentLine.width()) - columnWidth; // differenz erneut ausrechnen
@@ -211,34 +325,15 @@
 
 		} // close for
 		
+		optischerRandausgleich();
+		
 		myConsole("✅ broke text successfully into " + lineIndex + " lines"); // Public Console
 		
 	} // close function advanced linebreaking (variable)
 	
 	
 	
-	// Word Spacing anpassen (Funktion)
-	
-	function adjustWordSpacing($currentline){
-	 	
-	 	$currentline.removeClass("full").css("word-spacing", "normal"); // set width: auto and reset word-spacing
-	
-	 	function countSpaces(text){ // spaces zählen
-	 		spaces = 0;
-	 		for ( i = 0; i < text.length; i++ ) // durchlaufe alle zeichen
-	 		{
-	 			if(text.charAt(i) == '\u0020'){ // wenn leerzeichen
-	 				spaces++; // setze variable +1
-	 			}
-	 		}
-	 		return spaces;
-	 	}
-	 	
-	 	leftSpace = columnWidth - $currentline.width();
-	 	wordSpacing = ruler.width() + (leftSpace / countSpaces($currentline.text()));
-	 	$currentline.css("word-spacing", wordSpacing + "px").css("width", "100%");
-	 	$currentline.addClass("full");
-	}
+
 	
 	
 	//////////////////
@@ -267,7 +362,7 @@
 			if($('#column .line-' + lineIndex).width() >= columnWidth){ // wenn Zeile voll
 				
 				if(text.charAt(c) != '\u0020' & text.charAt(c) != '\u00AD'){	// wenn kein Leerzeichen und kein Softhyphen an aktueller Position
-					while (true){ // gehe so lange zurück bis ein Leerzeichen kommt
+					while (true){ // gehe so lange zurück bis ein Leerzeichen oder Softhyphen kommt
 						if(text.charAt(c) == '\u0020' || text.charAt(c) == '\u00AD'){
 							break;
 						}

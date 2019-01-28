@@ -7,7 +7,7 @@ $(document).ready(function(){
 	// Buttons and Checkboxes
 	
 	$('#justify').click(async function () {
-		$('#column').stop().empty(); // Textspalte leeren
+		$('#column').stop().empty().addClass("blocksatz"); // Textspalte leeren
 		$('#justify').prop('disabled', true)
 		$('#console').stop().empty(); // console leeren
 		
@@ -102,7 +102,7 @@ $(document).ready(function(){
 	$("#column").resizable({
 		handleSelector: ".resizehandle",
 		resizeHeight: false,
-		onDrag: function (e, $el, newWidth, newHeight, opt) {
+		onDrag: function() {
 			characterCount();
 		}
 	});

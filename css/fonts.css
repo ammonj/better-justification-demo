@@ -1,0 +1,73 @@
+/* Geoso
+-------------------------------------------------- */
+
+@font-face {
+   font-family: 'Geoso';
+   src: url('../fonts/Geoso/GeosoX-Regular.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}
+
+
+@font-face {
+   font-family: 'Geoso';
+   src: url('../fonts/Geoso/GeosoX-Thin.woff2') format('woff2');
+   font-weight: 100;
+   font-style: normal;
+}
+
+
+
+@font-face {
+   font-family: 'Geoso';
+   src: url('../fonts/Geoso/GeosoX-DemiBold.woff2') format('woff2');
+   font-weight: bold;
+   font-style: normal;
+}
+
+
+@font-face {
+   font-family: 'Geoso';
+   src: url('../fonts/Geoso/GeosoX-RegularItalic.woff2') format('woff2');
+   font-weight: normal;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: 'Geoso';
+   src: url('../fonts/Geoso/GeosoX-ThinItalic.woff2') format('woff2');
+   font-weight: 100;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: 'Geoso';
+   src: url('../fonts/Geoso/GeosoX-BoldItalic.woff2') format('woff2');
+   font-weight: bold;
+   font-style: italic;
+}
+
+
+@font-face {
+   font-family: 'GeosoSC';
+   src: url('../fonts/Geoso/Geoso_sc-Regular.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'GeosoSC';
+   src: url('../fonts/Geoso/Geoso_sc-Bold.woff2') format('woff2');
+   font-weight: bold;
+   font-style: normal;
+}
+
+
+
+/* Arcus Variable
+-------------------------------------------------- */
+
+@font-face {
+	font-family: 'Arcus';
+    src: url(../fonts/Arcus/ArcusVariableSameSpacing.ttf);
+}

@@ -16,7 +16,9 @@
 
     <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="./css/main.css">
+
     
     <script type="text/javascript" src="./js/jquery.min.js"></script>
     <script type="text/javascript" src="./js/jquery-resizable.min.js"></script>
@@ -35,27 +37,73 @@
 
 <body>
     <section id="inputsection">
-<!--         <span class="font-version">&Delta;</span> -->
-        <textarea id="input">A letter is two shapes, one light, one dark. I call the light shape the white of the letter and the dark shape the black. The black consists of the regions of the letter that enclose the white. White and black can be replaced by any combination of a light and dark colour, and light and dark can switch roles, but the intriguing effects of these permutations lie outside the scope of this book.</textarea>
-        <input type="range" min="12" max="50" value="25" class="slider" id="fontsize"><span id="fontsize-display" style="color: white;padding: 5px;"></span>
-        <button id="justify" type="button">justify</button><br>
-        <label><input type="checkbox" id="hyphenation" checked/>hyphenation</label><br>
-        <label><input type="checkbox" id="variable-font" checked/>variable font</label><br>
-        <label><input type="checkbox" id="ligatures" checked/>ligatures</label><br>
-<!--         <button id="removeBlocksatz" type="button">Linksbündig</button>
-        <button id="makeBlocksatz" type="button">Blocksatz</button> -->
-        <!-- <span class="description">// <b>greedy</b> typeset algorithm by Johannes Ammon</span> -->
+        <section id="logo">
+            <div><img src="icon.svg"/></div>
+            <div>better</div>
+            <div>justification</div>
+            <!-- <span>.com</span> -->
+        </section>
+        <section id="description">
+            Why  justification at the web looks so awful, and how to do it better by custom type design. -> Read the story.
+        </section>
+
+<!--         <hr> -->
+        <section>
+            <span id="fontversion">&#x0394;</span>
+        </section>
+
+        <section>
+            <h2>1. Paste your text …</h2>
+            <textarea id="input">A letter is two shapes, one light, one dark. I call the light shape the white of the letter and the dark shape the black. The black consists of the regions of the letter that enclose the white. White and black can be replaced by any combination of a light and dark colour, and light and dark can switch roles, but the intriguing effects of these permutations lie outside the scope of this book.</textarea>
+        </section>
+        
+        <section>
+            <h2>2. Choose column width …</h2>
+            <div class="flex" id="columnradios">
+                <label class="noselect"><input type="radio" name="group1" id="r1" value="1" />narrow</label>
+                <label class="noselect"><input type="radio" name="group1" id="r2" value="0" />medium</label>
+                <label class="noselect"><input type="radio" name="group1" id="r3" value="0" />wide</label>
+            <div>
+        </section>
+        
+        <section>
+        <h2>3. Choose fontsize …</h2>
+            <div class="flex">
+                <input type="range" min="12" max="50" value="25" class="slider" id="fontsize">
+                <span id="fontsize-display" style="color: white;padding: 5px;"></span>
+            </div>
+        </section>
+            
+        <section>
+            <h2>4. Select Parameters</h2>
+            <div class="flex" id="columnparameters">
+                <label class="noselect"><input type="checkbox" id="hyphenation" checked/>hyphenation</label>
+                <label class="noselect"><input type="checkbox" id="variable-font" checked/>variable font</label>
+                <label class="noselect"><input type="checkbox" id="ligatures" checked/>ligatures</label>
+            </div>
+        </section>
+        
+        <section>
+            <button id="justify" type="button">and justify</button><br>
+        </section>
+        
+
+        
         <ul id="console"></ul>
     </section>
     
+    
+
+    
     <section id="outputsection">
+
         <div class="wrapper">
             <div class="resizehandle">
                 <span id="character-count"></span>
                 <div class="resizesymbol"></div>
             </div>
             <div id="column" class="col"></div>
-            <button id="clone" type="button">clone</button>
+            <span id="clone" >clone</span>
         </div>
     </section>
     
