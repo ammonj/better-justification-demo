@@ -33,7 +33,7 @@ body{
 
 
 #inputsection{
-	flex-basis: 30vw;
+	width: 32rem;
 	padding: 2rem 3rem 3rem 3rem;
 	box-sizing: border-box;
 	background: #111111;
@@ -50,10 +50,10 @@ body{
 
 #logo div{
 	color: #111111;
-	background: white;
+	background-color: #e7e7e7;
 	font-size: 2.0rem;
 	font-weight: bold;
-	border: 2px solid white;
+	border: 2px solid #e7e7e7;
 	padding: .25em;
 	font-weight: regular;
 	margin-left: 0.2em;
@@ -65,7 +65,7 @@ body{
 	margin-left: 0;
 	padding: 0;
 	width: 2.2em;
-	background-image: url('../icon.svg');
+	background-image: url('../img/icon.svg');
 	background-repeat: no-repeat;
 	background-position:center ;
 	background-size: 100%;
@@ -122,12 +122,12 @@ h2{
 	font-style: italic;
 	resize: none;
  	color: white;
-	border: 2px solid #cdcdcd;
+	border: 2px solid slategray;
 	padding: 0.5em;
 	-webkit-appearance: none;
 	-moz-appearance:    none;
 	appearance:         none;
- 	background-color: slategray;
+ 	background-color: rgba(112,128,144, 0.2);
 }
 
 button[type=button]{
@@ -151,10 +151,11 @@ button[type=button]{
 button[type=button]:active{
 	transform: translateY(2px)
 }
-
-/* #justify{
-	transform: scale(2);
+/*
+ #justify{
+	transform: scale(1.5);
 	transform-origin: left top;
+	border: 1px solid slategray;
 } */
 
 
@@ -163,7 +164,7 @@ label{
 	padding: 0.25em 0.5em 0.5em 0.5em;
 	display: inline-block;
 	font-family: "GeosoSC", sans-serif;
-	color: white;
+	color: LightSteelblue;
 	cursor: pointer;
 }
 
@@ -259,18 +260,19 @@ label input[type="checkbox"], label input[type="radio"] {
 }
 
 #outputsection{
-	padding: 12.8rem 3rem 3rem 0;
+	padding: 12.3rem 3rem 3rem 0;
 	display: flex;
 	flex-flow: row nowrap;
+	overflow: scroll;
 /* 	background: yellow; */
 }
 
 
 #column{
-	background-image: url('../background.svg');
+/* 	background-image: url('../img/background.svg');
 	background-repeat: no-repeat;
 	background-position:left bottom;
-	background-size: 80%;
+	background-size: 80%; */
 }
 
 #column.blocksatz{
@@ -279,8 +281,8 @@ label input[type="checkbox"], label input[type="radio"] {
 
 
 .col{
-	width: 600px;
-	min-height: 400px;
+	width: 35rem;
+	min-height: 500px;
 	overflow: visible;
 	font-size: 25px;
 	font-family: 'Arcus';
@@ -291,43 +293,64 @@ label input[type="checkbox"], label input[type="radio"] {
 	border-left: 2px solid rgba(204, 153, 255, 1);
 	border-right: 2px solid rgba(204, 153, 255, 1);
 	box-shadow: 1px 1px 30px 10px #ccc;
-	margin-left: 3rem;
+	margin-left: 5rem;
 }
 
 .wrapper{
 	display: inline-flex;
 	width: auto;
+	height: fit-content;
 	flex-flow: column nowrap;
 	align-items: flex-end;
+	position: relative;
 }
 
-.resizehandle{
+.parameter{
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: flex-end;
-	padding-bottom: 0.8em;
 	cursor:col-resize;
 }
+
+.parameters{
+	margin-top: 1.5rem;
+}
+
 
 .remove-col{
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: flex-end;
+	margin-top: 6px;
 	padding-bottom: 0.8em;
 	cursor: pointer;
 	height:30px;
 }
+
+#clone{
+	padding-bottom: 0.8em;
+}
+/*
+.remove-col img, #clone img{
+	width: 20px;
+	height: auto;
+} */
 
 #character-count{
 	margin-right: 0.5em;
 	color: #AAA;
 }
 
-.resizesymbol{
-	width: 7px;
-	height: 30px;
-	background: #ff00ff;
+.resizehandle{
+	width: 5px;
+	height: 50px;
+	border-left: 2px solid #3b3b3b;
+	border-right: 2px solid #3b3b3b;
 	cursor:col-resize;
+	position: absolute;
+	top: 50%;
+	right: -1.5rem;
+	z-index: 10;
 }
 
 .line{
@@ -357,7 +380,8 @@ label input[type="checkbox"], label input[type="radio"] {
 .preview .leftSpaceIndicator,
 .preview #inputsection,
 .preview .remove-col,
-.preview #clone
+.preview #clone,
+.preview .parameters
 {
 	visibility: hidden;
 }

@@ -38,7 +38,7 @@
 <body>
     <section id="inputsection">
         <section id="logo">
-            <div><img src="icon.svg"/></div>
+            <div></div>
             <div>better</div>
             <div>justification</div>
             <!-- <span>.com</span> -->
@@ -46,11 +46,10 @@
         <section id="description">
             Why  justification at the web looks so awful, and how to do it better by custom type design. -> Read the story.
         </section>
-
 <!--         <hr> -->
-        <section>
+<!--         <section>
             <span id="fontversion">&#x0394;</span>
-        </section>
+        </section> -->
 
         <section>
             <h2>1. Paste your text …</h2>
@@ -60,9 +59,9 @@
         <section>
             <h2>2. Choose column width …</h2>
             <div class="flex" id="columnradios">
-                <label class="noselect"><input type="radio" name="group1" id="r1" value="1" />narrow</label>
-                <label class="noselect"><input type="radio" name="group1" id="r2" value="0" />medium</label>
-                <label class="noselect"><input type="radio" name="group1" id="r3" value="0" />wide</label>
+                <label class="noselect"><input type="radio" name="group1" id="r1" class="radiobutton" value="0" />narrow</label>
+                <label class="noselect"><input type="radio" name="group1" id="r2" class="radiobutton" value="1" checked/>medium</label>
+                <label class="noselect"><input type="radio" name="group1" id="r3" class="radiobutton" value="0" />wide</label>
             <div>
         </section>
         
@@ -84,7 +83,7 @@
         </section>
         
         <section>
-            <button id="justify" type="button">and justify</button><br>
+            <button id="justify" type="button">justify text</button><br>
         </section>
         
 
@@ -98,12 +97,12 @@
     <section id="outputsection">
 
         <div class="wrapper">
-            <div class="resizehandle">
-                <span id="character-count"></span>
-                <div class="resizesymbol"></div>
-            </div>
+            <span id="clone" ><img src="img/clone.png"/></span>
             <div id="column" class="col"></div>
-            <span id="clone" >clone</span>
+            <div class="resizehandle"></div>
+            <div class="parameters">
+                <span id="character-count"></span>
+            </div>
         </div>
     </section>
     

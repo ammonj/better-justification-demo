@@ -32,6 +32,23 @@ $(document).ready(function(){
 	});
 	
 	
+	$('.radiobutton').click( function () {
+		if($(this).is("#r1")){
+			$("#column").css("width", "22rem")
+			characterCount()
+		}
+		if($(this).is("#r2")){
+			$("#column").css("width", "35rem")
+			characterCount()
+		}
+		if($(this).is("#r3")){
+			$("#column").css("width", "50rem")
+			characterCount()
+		}
+	});
+	
+	
+	
 	// Clone
 	
 	$('#clone').click(function(){
@@ -40,7 +57,7 @@ $(document).ready(function(){
 		
 		$( "#column" ).clone(true, true).each(function(i){
   			this.id = uniqid; // to keep it unique
-		}).appendTo("#outputsection").wrap( "<div class='wrapper'></div>" ).before("<span class='remove-col'>remove</span>");
+		}).appendTo("#outputsection").wrap( "<div class='wrapper'></div>" ).before("<span class='remove-col'><img src=\"img/remove.png\" /></span>");
 	
 	});
 	
@@ -70,7 +87,7 @@ $(document).ready(function(){
 		fontSize = $("#fontsize").val();
 		noc = Math.floor((columnWidth / fontSize) * 2.5);
 		$("#character-count").html("about <b>" + noc + "</b> characters / line");
-		$(".resizesymbol").css("background-color", getColor(noc));
+		// $(".resizehandle").css("background-color", getColor(noc));
 		$("#column").css("border-color", getColor(noc));
 	}
 	

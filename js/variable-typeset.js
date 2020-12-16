@@ -12,6 +12,15 @@
 	// Geschütztes Leerzeichen vor Gedankenstrichen
 	
 	
+	
+	// Globale Variablen
+	
+	const normalwdth = 100;
+	const fontmin = 40;
+	const fontmax = 200;
+	
+	
+	
 	//////////////////
 	// Hilfsfunktionen
 	//////////////////
@@ -124,7 +133,7 @@
 				 		while ($(this).width() > (columnwidth + (measure / 2))){
 							wdth = wdth - 1;
 							$(this).css("font-variation-settings", ("\"wdth\" " + wdth));
-							if (wdth == 0){
+							if (wdth == fontmin){
 								break;
 							}
 				 		}
@@ -134,7 +143,7 @@
 				 		while ($(this).width() < (columnwidth + (measure / 2))){
 				 			 wdth = wdth + 1;
 				 			 $(this).css("font-variation-settings", ("\"wdth\" " + wdth));
-				 			 if (wdth > 200){
+				 			 if (wdth > fontmax){
 								wordspacing = wordspacing + 1;
 								$(this).css("word-spacing", (wordspacing + "px"));
 				 			 }
@@ -159,7 +168,7 @@
 		 			 while ($(this).width() < (columnwidth + (measure / 2))){
 		 			  	wdth = wdth + 1;
 		 			  	$(this).css("font-variation-settings", ("\"wdth\" " + wdth));
-		 			  	if (wdth > 200){
+		 			  	if (wdth > fontmax){
 		 			 		wordspacing = wordspacing + 1;
 		 			 		$(this).css("word-spacing", (wordspacing + "px"));
 		 			  	}
@@ -179,7 +188,7 @@
 	
 	async function advancedLineBreaking(dlig, slow){
 		
-		const normalwdth = 100;
+
 		const text = $('#input').text();
 		const columnWidth = $('#column').width(); // Spaltenbreite
 		
@@ -193,6 +202,7 @@
 		const $column = $('#column')
 		let $currentLine
 		let totaleLines = 0
+		
 		
 		
 		for ( c = 0; c < text.length; c++ )
@@ -223,7 +233,7 @@
 					$currentLineClone.css("font-variation-settings", ("\'wdth\'" + wdth));
 					overflow = ($currentLineClone.width()) - columnWidth; // differenz erneut berechnen
 					//console.log("wdth " + wdth + "overflow" + overflow);
-					if (wdth <= 0) { // wenn wdth achse ausgerzeizt ist
+					if (wdth <= fontmin) { // wenn wdth achse ausgerzeizt ist
 						myConsole("⚠️ line " + lineIndex + ": shrinking failed"); // Console Output
 						
 						if (dlig == true){ // wenn dlig == true
@@ -281,7 +291,7 @@
 				// Variable Font Action
 						
 				ccounter = ccounter + cneu;
-				wdth = 100 // reset wdth Achse, um Vorgang zu beschleunigen
+				wdth = normalwdth // reset wdth Achse, um Vorgang zu beschleunigen
 				overflow = ($currentLine.width()) - columnWidth; // differenz zwischen zeilenlänge und spaltenbreite
 				
 				// $currentLineClone = $currentLine.clone()
@@ -292,7 +302,7 @@
 					$currentLineClone.css("font-variation-settings", ("\'wdth\'" + wdth));
 					overflow = ($currentLineClone.width()) - columnWidth; // differenz erneut ausrechnen
 				
-					if (wdth > 200) {
+					if (wdth > fontmax) {
 						console.log("LeftSpace in Zeile " + lineIndex) ; // Legacy Console
 						myConsole("⚠️ line " + lineIndex + ": adjusted word spacing");
 						$currentLine.css("font-variation-settings", $currentLineClone.css("font-variation-settings"))
