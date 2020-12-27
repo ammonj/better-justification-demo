@@ -3,111 +3,92 @@
 
 <head>
 
-    <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8">
-    <title>Demo</title>
-    <meta name="description" content="">
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Demo</title>
+<meta name="description" content="">
 
 
-    <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/main.css">
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="./css/fonts.css">
+<link rel="stylesheet" href="./css/main.css">
 
-    
-    <script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/jquery-resizable.min.js"></script>
-    
-    <script type="text/javascript" src="./js/guessLanguage/_languageData.js"></script>
-    <script type="text/javascript" src="./js/guessLanguage/guessLanguage.js"></script>
-    
-    <script type="text/javascript" src="./js/hypher/dist/jquery.hypher.js"></script>
-    <script type="text/javascript" src="./js/hypher/dist/patterns/en-us.js"></script>
-    <script type="text/javascript" src="./js/hypher/dist/patterns/de.js"></script>
-    
-    <script type="text/javascript" src="./js/variable-typeset.js"></script>
-    <script type="text/javascript" src="./js/ui.js"></script>
- 
+
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery-resizable.min.js"></script>
+
+<script type="text/javascript" src="./js/guessLanguage/_languageData.js"></script>
+<script type="text/javascript" src="./js/guessLanguage/guessLanguage.js"></script>
+
+<script type="text/javascript" src="./js/hypher/dist/jquery.hypher.js"></script>
+<script type="text/javascript" src="./js/hypher/dist/patterns/en-us.js"></script>
+<script type="text/javascript" src="./js/hypher/dist/patterns/de.js"></script>
+
+<script type="text/javascript" src="./js/variable-typeset.js"></script>
+<script type="text/javascript" src="./js/ui.js"></script>
+
 </head>
 
 <body>
-    <section id="inputsection">
-        <section id="logo">
-            <div></div>
-            <div>better</div>
-            <div>justification</div>
-            <!-- <span>.com</span> -->
-        </section>
-        <section id="description">
-            Why  justification at the web looks so awful, and how to do it better by custom type design. -> Read the story.
-        </section>
-<!--         <hr> -->
-<!--         <section>
-            <span id="fontversion">&#x0394;</span>
-        </section> -->
-
-        <section>
-            <h2>1. Paste your text …</h2>
-            <textarea id="input">A letter is two shapes, one light, one dark. I call the light shape the white of the letter and the dark shape the black. The black consists of the regions of the letter that enclose the white. White and black can be replaced by any combination of a light and dark colour, and light and dark can switch roles, but the intriguing effects of these permutations lie outside the scope of this book.</textarea>
-        </section>
-        
-        <section>
-            <h2>2. Choose column width …</h2>
-            <div class="flex" id="columnradios">
-                <label class="noselect"><input type="radio" name="group1" id="r1" class="radiobutton" value="0" />narrow</label>
-                <label class="noselect"><input type="radio" name="group1" id="r2" class="radiobutton" value="1" checked/>medium</label>
-                <label class="noselect"><input type="radio" name="group1" id="r3" class="radiobutton" value="0" />wide</label>
-            <div>
-        </section>
-        
-        <section>
-        <h2>3. Choose fontsize …</h2>
-            <div class="flex">
-                <input type="range" min="12" max="50" value="25" class="slider" id="fontsize">
-                <span id="fontsize-display" style="color: white;padding: 5px;"></span>
-            </div>
-        </section>
-            
-        <section>
-            <h2>4. Select Parameters</h2>
-            <div class="flex" id="columnparameters">
-                <label class="noselect"><input type="checkbox" id="hyphenation" checked/>hyphenation</label>
-                <label class="noselect"><input type="checkbox" id="variable-font" checked/>variable font</label>
-                <label class="noselect"><input type="checkbox" id="ligatures" checked/>ligatures</label>
-            </div>
-        </section>
-        
-        <section>
-            <button id="justify" type="button">justify text</button><br>
-        </section>
-        
-
-        
-        <ul id="console"></ul>
-    </section>
-    
-    
-
-    
-    <section id="outputsection">
-
-        <div class="wrapper">
-            <span id="clone" ><img src="img/clone.png"/></span>
-            <div id="column" class="col"></div>
-            <div class="resizehandle"></div>
-            <div class="parameters">
-                <span id="character-count"></span>
-            </div>
-        </div>
-    </section>
-    
-    
-    
+	<section id="inputsection">
+	<section id="logo">
+	<div></div>
+	<span>better</span>
+	<span>justification</span>
+	</section>
+	
+	<section id="description">
+	This live demo simulates the functionality of a line breaking algorithm with additional parameters such as variable fonts and experimental ligatures. The code is not optimized for performance and is only meant for educational purposes. -> Read the article on <a href="https://finaltype.de/en/topics/better-justification-for-the-web" target="_blank">finaltype.de</a>
+	</section>
+	
+	<section>
+		<textarea id="text-input">A letter is two shapes, one light, one dark. I call the light shape the white of the letter and the dark shape the black. The black consists of the regions of the letter that enclose the white. White and black can be replaced by any combination of a light and dark colour, and light and dark can switch roles, but the intriguing effects of these permutations lie outside the scope of this book.</textarea>
+	</section>
+	
+	
+	<section class="flex" id="columnradios">
+	<label class="noselect"><input type="radio" name="group1" id="r1" class="radiobutton" value="0" />narrow</label>
+	<label class="noselect"><input type="radio" name="group1" id="r2" class="radiobutton" value="1" checked/>medium</label>
+	<label class="noselect"><input type="radio" name="group1" id="r3" class="radiobutton" value="0" />wide</label>
+	</section>
+	
+	
+	<section class="flex">
+	<span id="fontsize-display"></span>
+	<input type="range" min="12" max="50" value="25" class="slider" id="fontsize">
+	</section>
+	
+	
+	<section class="flex" id="columnparameters">
+	<label class="noselect"><input type="checkbox" id="hyphenation" checked/>hyphenation</label>
+	<label class="noselect"><input type="checkbox" id="variable-font" checked/>variable font</label>
+	<label class="noselect"><input type="checkbox" id="ligatures" checked/>ligatures</label>
+	</section>
+	
+	<section>
+	<button id="justify" type="button">justify text</button><br>
+	</section>
+	
+	<ul id="console"></ul>
+	</section>
+	
+	<section id="outputsection">
+	
+	<div class="wrapper">
+	<span id="clone" ><img src="img/clone.png"/></span>
+	<div id="column" class="col"></div>
+	<div class="resizehandle"></div>
+	<div class="parameters">
+	<span id="character-count"></span>
+	</div>
+	</div>
+	</section>
 </body>
 
 </html>
