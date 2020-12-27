@@ -6,26 +6,26 @@ $(document).ready(function () {
 	// Buttons and Checkboxes
 
 	$("#justify").click(async function () {
-		$("#column").stop().empty().addClass("blocksatz"); // Textspalte leeren
+		$("#column").stop().empty().addClass("blocksatz"); // clear text column
 		$("#justify").prop("disabled", true);
-		$("#console").stop().empty(); // console leeren
+		$("#console").stop().empty(); // clear console
 
 		if ($("#hyphenation").is(":checked")) {
-			// Wenn Silbentrennung an, dann mache Silbentrennung
+			// if hyphenation is checked: hyphenate
 			makeHyphenation();
 		} else {
-			// Sonst Silbentrennung entfernen
+			// otherwise: remove previous hyphenations
 			removeHyphenation();
 		}
 
 		if ($("#variable-font").is(":checked")) {
 			if ($("#ligatures").is(":checked")) {
-				await advancedLineBreaking(true, true); // Verbesserten Blocksatz mit Ligaturen setzen
+				await advancedLineBreaking(true, true); // perform advanced line breaking with ligatures
 			} else {
-				await advancedLineBreaking(false, true); // Verbesserten Blocksatz setzen
+				await advancedLineBreaking(false, true); // perform advanced line breaking without ligatures
 			}
 		} else {
-			// normalen Blocksatz setzen
+			// perform regular line breaking
 			textSetzen(); // zunächst Linksbündig setzen
 			// makeBlocksatz();
 		}
@@ -33,6 +33,8 @@ $(document).ready(function () {
 		$("#justify").prop("disabled", false);
 	});
 
+
+	/*
 	$(".radiobutton").click(function () {
 		if ($(this).is("#r1")) {
 			$("#column").css("width", "22rem");
@@ -47,9 +49,9 @@ $(document).ready(function () {
 			characterCount();
 		}
 	});
+	*/
 
-	// Clone
-
+	// clone column
 	$("#clone").click(function () {
 		uniqid = Date.now();
 
@@ -63,35 +65,31 @@ $(document).ready(function () {
 			.before("<span class='remove-col'><img src=\"img/remove.png\" /></span>");
 	});
 
-	// delete clone
-
+	// delete column clone
 	$("#outputsection").on("click", ".remove-col", function () {
 		$(this).closest(".wrapper").remove();
 	});
 
-	// Character Count
-
+	// get color for column border
 	function getColor(value) {
 		//value from 0 to 1
 		var hue = value.toString(10);
 		return ["hsl(", hue, ",100%,45%)"].join("");
 	}
 
+	// character count
 	function characterCount() {
 		columnWidth = $("#column").width();
 		fontSize = $("#fontsize").val();
 		noc = Math.floor((columnWidth / fontSize) * 2.5);
 		$("#character-count").html("about <b>" + noc + "</b> characters / line");
-		// $(".resizehandle").css("background-color", getColor(noc));
 		$("#column").css("border-color", getColor(noc));
 	}
 
-	characterCount(); // CharacterCount beim Seitenaufruf ausführen
+	characterCount(); // initial character count, also sets border color
 
-	// Font Size
-
+	// font size
 	$("#fontsize-display").append($("#fontsize").val() + "px"); // set initial font size display
-
 	$("#fontsize").mousemove(function () {
 		// live update font-size indicator + font-size preview
 		fontsize = $("#fontsize").val() + "px";
@@ -99,16 +97,14 @@ $(document).ready(function () {
 		$("#fontsize-display").text(fontsize);
 		$("#column").css("font-size", fontsize);
 	});
-
 	$("#fontsize").mouseup(function () {
-		// rerun text setting automatically when font-size changes
-		$("#column").stop().empty(); // textspalte leeren
-		$("#console").stop().empty(); // console leeren
-		myConsole("✅ set font-size: " + $("#fontsize").val() + "px"); // Public Console
+		// clear column automatically when font-size changes
+		$("#column").stop().empty(); // clear text column
+		$("#console").stop().empty(); // clear console
+		myConsole("✅ set font-size: " + $("#fontsize").val() + "px"); // public console output
 	});
 
-	// Resizable Text Column
-
+	// resizable text column
 	$("#column").resizable({
 		handleSelector: ".resizehandle",
 		resizeHeight: false,
@@ -116,25 +112,22 @@ $(document).ready(function () {
 			characterCount();
 		},
 	});
-
 	$(".resizehandle").mouseup(function () {
-		$("#column").stop().empty(); // textspalte leeren
-		$("#console").stop().empty(); // console leeren
+		$("#column").stop().empty(); // clear text column
+		$("#console").stop().empty(); // clear console
 	});
 
-	// Text Preview when Spacebar is pressed
-
+	// text preview when spacebar is pressed
 	$(window).keydown(function (event) {
 		if (event.which == 32) {
 			event.preventDefault();
 			$("body").addClass("preview");
 		}
 	});
-
 	$(window).keyup(function (event) {
 		if (event.which == 32) {
 			event.preventDefault();
 			$("body").removeClass("preview");
 		}
 	});
-}); // close document.ready
+});
