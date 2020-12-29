@@ -95,41 +95,14 @@ a{
 }
 
 #logo {
-	display: flex;
+	/* display: flex;
 	flex-flow: row nowrap;
 	align-items: stretch;
-	justify-content: space-between;
-	margin-bottom: 5.25rem;
-	display: none;
-}
-
-#logo div {
-	color: #111111;
-	background-color: #e7e7e7;
-	font-size: 2rem;
-	font-weight: bold;
-	border: 2px solid #e7e7e7;
-	padding: 0.25em;
-	font-weight: regular;
-	margin-left: 0.2em;
-	flex-grow: 1;
-	text-align: center;
-}
-
-#logo div:first-of-type {
-	margin-left: 0;
-	padding: 0;
-	width: 2.2em;
-	background-image: url("../img/icon.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100%;
-	flex-grow: 0;
+	justify-content: space-between; */
 }
 
 #logo img {
-	height: 1em;
-	display: none;
+	height: 2em;
 }
 
 #inputsection section {
@@ -305,7 +278,7 @@ label input[type="radio"] {
 }
 
 #outputsection {
-	padding: 12.3rem 3rem 3rem 0;
+	padding: 11rem 3rem 3rem 0;
 	display: flex;
 	flex-flow: row nowrap;
 	overflow: scroll;
