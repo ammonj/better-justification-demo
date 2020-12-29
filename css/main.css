@@ -4,46 +4,55 @@
 	padding: 0px;
 }
 
+/* fira-sans-300 - latin */
+@font-face {
+  font-family: 'Fira';
+  font-style: normal;
+  font-weight: 300;
+  src: local(''),
+	   url('../fonts/fira-sans-v10-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+	   url('../fonts/fira-sans-v10-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 /* fira-sans-italic - latin */
 @font-face {
-	font-family: "Fira";
-	font-style: italic;
-	font-weight: 400;
-	src: local(""),
-		url("../fonts/fira-sans-v10-latin-italic.woff2") format("woff2"),
-		/* Chrome 26+, Opera 23+, Firefox 39+ */
-			url("../fonts/fira-sans-v10-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: 'Fira';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+	   url('../fonts/fira-sans-v10-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+	   url('../fonts/fira-sans-v10-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* fira-sans-regular - latin */
 @font-face {
-	font-family: "Fira";
-	font-style: normal;
-	font-weight: 400;
-	src: local(""),
-		url("../fonts/fira-sans-v10-latin-regular.woff2") format("woff2"),
-		/* Chrome 26+, Opera 23+, Firefox 39+ */
-			url("../fonts/fira-sans-v10-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: 'Fira';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+	   url('../fonts/fira-sans-v10-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+	   url('../fonts/fira-sans-v10-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* fira-sans-800 - latin */
 @font-face {
-	font-family: "Fira";
-	font-style: normal;
-	font-weight: 800;
-	src: local(""), url("../fonts/fira-sans-v10-latin-800.woff2") format("woff2"),
-		/* Chrome 26+, Opera 23+, Firefox 39+ */
-			url("../fonts/fira-sans-v10-latin-800.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: 'Fira';
+  font-style: normal;
+  font-weight: 800;
+  src: local(''),
+	   url('../fonts/fira-sans-v10-latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+	   url('../fonts/fira-sans-v10-latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* Arcus Variable */
+
+/* Variable Font */
 
 @font-face {
-	font-family: "Variable";
-	src: url("../fonts/VariableSameSpacing-latest.ttf");
+	 font-family: 'Variable';
+	 src: url('../fonts/ArcusVariable-SameSpacingGX.woff2') format('woff2-variations');
+	 font-stretch: 75% 125%;
+	 font-style: normal;
 }
-
-
 
 
 html {
@@ -128,6 +137,9 @@ a{
 }
 
 #description {
+	font-size: 1em;
+	color: rgba(0,0,0,0.5);
+	font-size: 0.8em;
 }
 
 #text-input {
@@ -135,8 +147,10 @@ a{
 	width: 100%;
 	display: block;
 	box-sizing: border-box;
-	font-size: 0.8em;
-	color: rgba(0,0,0,0.5);
+	font-size: 1em;
+	font-family: "Fira", sans-serif;
+	font-style: italic;
+	//color: rgba(0,0,0,0.5);
 	resize: none;
 	border: 0;
 	border-radius: 0.25rem;
@@ -167,6 +181,24 @@ button[type="button"]:active {
 	transform: translateY(2px);
 }
 
+button#justify{
+	position: relative;
+	padding-left: 2.2em;
+}
+
+button#justify:before {
+	position: absolute;
+	top: 50%;
+	left: .75em;
+	width: .8em;
+	height: .8em;
+	margin-top: -.4em;
+	content: '';
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAABkCAMAAACCTv/3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////5ubmueBsSwAAAAJ0Uk5T/wDltzBKAAAAPklEQVR42uzYQQ0AAAgDseHfNC4IyVoD912WAACUm3uampqampqamq+aAAD+IVtTU1NTU1NT0z8EAFBsBRgAX+kR+Qam138AAAAASUVORK5CYII=);
+}
+
 label {
 	padding: 0.45em 0.5em 0.5em 0.5em;
 	border-radius: 0.25rem;
@@ -189,7 +221,6 @@ label input[type="radio"] {
 .flex {
 	display: flex;
 	flex-flow: row nowrap;
-	/* border: 1px solid hotpink; */
 	align-items: center;
 }
 
@@ -281,12 +312,6 @@ label input[type="radio"] {
 	/* 	background: yellow; */
 }
 
-#column {
-	/* 	background-image: url('../img/background.svg');
-	background-repeat: no-repeat;
-	background-position:left bottom;
-	background-size: 80%; */
-}
 
 #column.blocksatz {
 	background-image: none;
@@ -341,11 +366,6 @@ label input[type="radio"] {
 #clone {
 	padding-bottom: 0.8em;
 }
-/*
-.remove-col img, #clone img{
-	width: 20px;
-	height: auto;
-} */
 
 #character-count {
 	margin-right: 0.5em;
@@ -365,8 +385,6 @@ label input[type="radio"] {
 }
 
 .line {
-	/*  	display: block; */
-	/* 	width: 100%; */
 	white-space: nowrap;
 }
 
@@ -402,14 +420,3 @@ label input[type="radio"] {
 body.preview {
 	background: white;
 }
-
-/* Debugging */
-/*
- .line:nth-of-type(odd){
-	color: #ff00ff;
-}
-
-.line:nth-of-type(even){
-	color: #00ff00;
-}
- */
