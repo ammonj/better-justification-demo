@@ -115,6 +115,16 @@ a{
 	font-size: 0.8em;
 }
 
+#browseralert{
+	color: #EF0038;
+}
+
+@supports (font-variation-settings: 'wdth' 115) {
+	#browseralert{
+		display: none;
+	}
+}
+
 #text-input {
 	height: 200px;
 	width: 100%;
