@@ -285,7 +285,7 @@ label input[type="radio"] {
 }
 
 #outputsection {
-	padding: 11rem 3rem 3rem 0;
+	padding: 9.7rem 3rem 3rem 0;
 	display: flex;
 	flex-flow: row nowrap;
 	overflow: scroll;
